@@ -64,13 +64,13 @@ h3,
 .page {
   display: flex;
   flex-direction: column;
-  gap: 90px;
+  gap: 120px;
   position: relative;
   z-index: 1;
 }
 
 .hero {
-  padding: 32px 7vw 0;
+  padding: 40px 7vw 20px;
   background: linear-gradient(150deg, rgba(255, 255, 255, 0.95), rgba(239, 246, 255, 0.85));
   border-bottom: 1px solid var(--border);
   box-shadow: 0 20px 60px rgba(11, 27, 43, 0.06);
@@ -148,7 +148,7 @@ h3,
   gap: 60px;
   align-items: center;
   max-width: var(--max);
-  margin: 42px auto 70px;
+  margin: 48px auto 96px;
 }
 
 .hero-text h1 {
@@ -244,12 +244,12 @@ h3,
 .section {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 7vw;
+  padding: 32px 7vw;
 }
 
 .section-head {
   max-width: 720px;
-  margin-bottom: 36px;
+  margin-bottom: 42px;
 }
 
 .section-sub {
@@ -268,7 +268,7 @@ h3,
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 26px;
+  gap: 30px;
 }
 
 .service-card,
@@ -306,7 +306,7 @@ h3,
 .split {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
+  gap: 40px;
   align-items: center;
 }
 
@@ -364,7 +364,7 @@ h3,
 }
 
 .contact {
-  margin-bottom: 80px;
+  margin-bottom: 110px;
 }
 
 .contact-grid {
@@ -424,7 +424,7 @@ h3,
 
 .faq-list {
   display: grid;
-  gap: 16px;
+  gap: 20px;
   max-width: 800px;
 }
 
@@ -577,12 +577,28 @@ h3,
   }
 
   .hero-content {
-    margin: 28px auto 40px;
+    margin: 28px auto 52px;
   }
 
   .hero-cta {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .page {
+    gap: 96px;
+  }
+
+  .section {
+    padding: 24px 7vw;
+  }
+
+  .cards {
+    gap: 22px;
+  }
+
+  .split {
+    gap: 28px;
   }
 
   .footer-inner {
