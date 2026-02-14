@@ -205,6 +205,7 @@ const whatsappLink = document.getElementById("whatsapp-link");
 const sliderTrack = document.querySelector("[data-slider-track]");
 const sliderPrev = document.querySelector("[data-slider-prev]");
 const sliderNext = document.querySelector("[data-slider-next]");
+const sliderDots = document.querySelector("[data-slider-dots]");
 
 const applyLanguage = (lang) => {
   const dict = translations[lang] || translations[DEFAULT_LANG];
@@ -263,6 +264,19 @@ const scrollSliderByCard = (direction) => {
 
   const gap = 24;
   const amount = card.getBoundingClientRect().width + gap;
+  const maxScrollLeft = sliderTrack.scrollWidth - sliderTrack.clientWidth;
+  const nextLeft = sliderTrack.scrollLeft + direction * amount;
+
+  if (nextLeft < 10) {
+    sliderTrack.scrollTo({ left: maxScrollLeft, behavior: "smooth" });
+    return;
+  }
+
+  if (nextLeft > maxScrollLeft - 10) {
+    sliderTrack.scrollTo({ left: 0, behavior: "smooth" });
+    return;
+  }
+
   sliderTrack.scrollBy({ left: direction * amount, behavior: "smooth" });
 };
 
@@ -273,3 +287,63 @@ if (sliderPrev) {
 if (sliderNext) {
   sliderNext.addEventListener("click", () => scrollSliderByCard(1));
 }
+
+const buildSliderDots = () => {
+  if (!sliderTrack || !sliderDots) {
+    return;
+  }
+
+  const cards = Array.from(sliderTrack.querySelectorAll(".service-card"));
+  sliderDots.innerHTML = "";
+
+  cards.forEach((card, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "slider-dot";
+    dot.setAttribute("aria-label", `Slide ${index + 1}`);
+    dot.addEventListener("click", () => {
+      card.scrollIntoView({ behavior: "smooth", inline: "start" });
+    });
+    sliderDots.appendChild(dot);
+  });
+};
+
+const updateActiveDot = () => {
+  if (!sliderTrack || !sliderDots) {
+    return;
+  }
+
+  const cards = Array.from(sliderTrack.querySelectorAll(".service-card"));
+  const dots = Array.from(sliderDots.querySelectorAll(".slider-dot"));
+  if (!cards.length || !dots.length) {
+    return;
+  }
+
+  const trackLeft = sliderTrack.getBoundingClientRect().left;
+  let activeIndex = 0;
+
+  cards.forEach((card, index) => {
+    const cardLeft = card.getBoundingClientRect().left;
+    if (cardLeft - trackLeft < card.getBoundingClientRect().width * 0.5) {
+      activeIndex = index;
+    }
+  });
+
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("is-active", index === activeIndex);
+  });
+};
+
+buildSliderDots();
+updateActiveDot();
+
+if (sliderTrack) {
+  sliderTrack.addEventListener("scroll", () => {
+    window.requestAnimationFrame(updateActiveDot);
+  });
+}
+
+window.addEventListener("resize", () => {
+  buildSliderDots();
+  updateActiveDot();
+});

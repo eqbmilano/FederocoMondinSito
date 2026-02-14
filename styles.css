@@ -474,6 +474,28 @@ h3,
   box-shadow: 0 12px 28px rgba(11, 27, 43, 0.16);
 }
 
+.slider-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 74, 162, 0.3);
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.slider-dot.is-active {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
 .faq-item {
   background: var(--card);
   border-radius: var(--radius-sm);
@@ -653,6 +675,10 @@ h3,
 
   .slider-btn {
     display: none;
+  }
+
+  .slider-dots {
+    margin-top: 12px;
   }
 
   .footer-inner {
