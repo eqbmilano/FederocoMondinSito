@@ -428,6 +428,52 @@ h3,
   max-width: 800px;
 }
 
+.method-slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.method-cards {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 8px 4px 16px;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 12px;
+  scrollbar-width: none;
+}
+
+.method-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.method-cards .service-card {
+  flex: 0 0 min(320px, 85vw);
+  scroll-snap-align: start;
+}
+
+.slider-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--accent-dark);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.slider-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(11, 27, 43, 0.16);
+}
+
 .faq-item {
   background: var(--card);
   border-radius: var(--radius-sm);
@@ -599,6 +645,14 @@ h3,
 
   .split {
     gap: 28px;
+  }
+
+  .method-slider {
+    grid-template-columns: 1fr;
+  }
+
+  .slider-btn {
+    display: none;
   }
 
   .footer-inner {

@@ -50,6 +50,8 @@ const translations = {
     "method.cards.2.body": "Esercizi personalizzati, adattati nel tempo.",
     "method.cards.3.title": "4. Tutoring fino al risultato",
     "method.cards.3.body": "Feedback costante e aggiustamenti fino all autonomia.",
+    "method.prev": "Indietro",
+    "method.next": "Avanti",
     "reviews.eyebrow": "Testimonianze",
     "reviews.title": "Risultati percepiti dai pazienti.",
     "reviews.cards.0.body":
@@ -146,6 +148,8 @@ const translations = {
     "method.cards.2.body": "Personalized exercises, adapted over time.",
     "method.cards.3.title": "4. Tutoring until results",
     "method.cards.3.body": "Ongoing feedback and adjustments to autonomy.",
+    "method.prev": "Back",
+    "method.next": "Next",
     "reviews.eyebrow": "Reviews",
     "reviews.title": "Results reported by patients.",
     "reviews.cards.0.body":
@@ -198,6 +202,9 @@ const elements = Array.from(document.querySelectorAll("[data-i18n]"));
 const placeholders = Array.from(document.querySelectorAll("[data-i18n-placeholder]"));
 const langToggle = document.querySelector("[data-lang-toggle]");
 const whatsappLink = document.getElementById("whatsapp-link");
+const sliderTrack = document.querySelector("[data-slider-track]");
+const sliderPrev = document.querySelector("[data-slider-prev]");
+const sliderNext = document.querySelector("[data-slider-next]");
 
 const applyLanguage = (lang) => {
   const dict = translations[lang] || translations[DEFAULT_LANG];
@@ -242,4 +249,27 @@ if (langToggle) {
     localStorage.setItem(STORAGE_KEY, currentLang);
     applyLanguage(currentLang);
   });
+}
+
+const scrollSliderByCard = (direction) => {
+  if (!sliderTrack) {
+    return;
+  }
+
+  const card = sliderTrack.querySelector(".service-card");
+  if (!card) {
+    return;
+  }
+
+  const gap = 24;
+  const amount = card.getBoundingClientRect().width + gap;
+  sliderTrack.scrollBy({ left: direction * amount, behavior: "smooth" });
+};
+
+if (sliderPrev) {
+  sliderPrev.addEventListener("click", () => scrollSliderByCard(-1));
+}
+
+if (sliderNext) {
+  sliderNext.addEventListener("click", () => scrollSliderByCard(1));
 }
