@@ -1,0 +1,52 @@
+.me {
+  padding: 4.5rem 0;
+}
+
+.me__head {
+  max-width: 640px;
+  margin-bottom: 3rem;
+}
+
+.me__sub {
+  color: var(--color-brown-secondary);
+  opacity: 0.8;
+  margin-top: 0.75rem;
+}
+
+.me__steps {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .me__steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.me__step {
+  position: relative;
+  padding: 1.75rem 1.5rem;
+  border-top: 2px solid var(--color-brown-primary);
+}
+
+.me__step-number {
+  display: block;
+  font-family: var(--font-manrope);
+  font-weight: 700;
+  font-size: 1.5rem;
+  opacity: 0.25;
+  margin-bottom: 0.75rem;
+}
+
+.me__step h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.me__step p {
+  font-size: 0.9rem;
+  color: var(--color-brown-secondary);
+  opacity: 0.8;
+}

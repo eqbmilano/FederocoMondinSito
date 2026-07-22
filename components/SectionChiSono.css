@@ -1,0 +1,99 @@
+.cs {
+  padding: 4.5rem 0;
+  background: var(--color-white);
+}
+
+.cs__inner {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .cs__inner {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+
+.cs__photo {
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  background: var(--color-greige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cs__photo span {
+  font-family: var(--font-manrope);
+  font-weight: 700;
+  font-size: 3rem;
+  letter-spacing: 0.05em;
+  color: var(--color-white);
+  opacity: 0.85;
+}
+
+.cs__body {
+  color: var(--color-brown-secondary);
+  opacity: 0.85;
+  margin: 1rem 0 1.5rem;
+}
+
+.cs__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.cs__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.95rem;
+  color: var(--color-brown-primary);
+}
+.cs__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-brown-primary);
+  opacity: 0.5;
+}
+
+.cs__profile {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-separator);
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 420px;
+}
+
+.cs__profile-title {
+  display: block;
+  font-family: var(--font-manrope);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 0.9rem;
+}
+
+.cs__profile-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-manrope);
+  font-size: 0.9rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--color-separator);
+}
+.cs__profile-row:first-of-type {
+  border-top: none;
+}
+.cs__profile-row span:last-child {
+  opacity: 0.55;
+  font-weight: 500;
+}

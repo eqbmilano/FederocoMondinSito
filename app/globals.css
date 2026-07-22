@@ -1,0 +1,188 @@
+/* ─── Token palette EQB (da EQB-Milano-website/app/globals.css) ─── */
+:root {
+  color-scheme: light;
+  --color-brown-primary: #322523;
+  --color-brown-secondary: #4b3531;
+  --color-bg-light: #f8f7f4;
+  --color-muted: #a09890;
+  --color-separator: #d4cfc9;
+  --color-greige: #c8bdb0;
+  --color-white: #ffffff;
+
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-overshoot: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg-light);
+  color: var(--color-brown-primary);
+  font-family: var(--font-poppins);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+h3 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+p {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+a {
+  color: var(--color-brown-primary);
+  text-decoration: none;
+  transition: var(--ease-smooth);
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ─── Label EQB standard ─── */
+.eqb-label {
+  font-family: var(--font-manrope);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-brown-primary);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* ─── Sistema animazione scroll-trigger (blur+fade) ─── */
+.my-anim {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(44px);
+  transition:
+    opacity 1.1s var(--ease-overshoot),
+    transform 1.1s var(--ease-overshoot),
+    filter 1.1s var(--ease-overshoot);
+}
+.my-anim--right {
+  transform: translateX(48px);
+  filter: blur(8px);
+}
+.my-anim--scale {
+  transform: scale(0.88) translateY(20px);
+  filter: none;
+}
+.is-on .my-anim--1 {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition-delay: 0s;
+}
+.is-on .my-anim--2 {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition-delay: 0.15s;
+}
+.is-on .my-anim--3 {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition-delay: 0.3s;
+}
+.is-on .my-anim--4 {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition-delay: 0.45s;
+}
+.is-on .my-anim--5 {
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition-delay: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .my-anim {
+    transition: none !important;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* ─── Bottoni condivisi ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-manrope);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.25s var(--ease-smooth), color 0.25s var(--ease-smooth), border-color 0.25s var(--ease-smooth), transform 0.2s var(--ease-spring);
+}
+.btn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+.btn--primary {
+  background: var(--color-brown-primary);
+  color: var(--color-white);
+}
+.btn--primary:hover {
+  background: var(--color-brown-secondary);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--color-brown-primary);
+  border-color: var(--color-separator);
+}
+.btn--ghost:hover {
+  background: var(--color-white);
+  border-color: var(--color-brown-primary);
+}
+
+/* ─── Container condiviso ─── */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
