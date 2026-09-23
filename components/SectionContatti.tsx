@@ -3,6 +3,7 @@ import React from "react";
 import { useI18n } from "../lib/i18n";
 import { useVisible } from "./useVisible";
 import "./SectionContatti.css";
+import { PROFESSIONISTA } from "../lib/site";
 
 export const SectionContatti: React.FC = () => {
   const { t } = useI18n();
@@ -52,8 +53,14 @@ export const SectionContatti: React.FC = () => {
             <div className="co__info-card">
               <h3>{t("contact.info.title")}</h3>
               <p>{t("contact.info.address")}</p>
-              <p>{t("contact.info.phone")}</p>
-              <p>{t("contact.info.email")}</p>
+              {/* Numero e mail cliccabili: da telefono si chiama con un tocco, e i
+                  motori di ricerca leggono il contatto invece di vedere solo testo. */}
+              <p>
+                <a href={`tel:${PROFESSIONISTA.telefono.replace(/\s/g, "")}`}>{t("contact.info.phone")}</a>
+              </p>
+              <p>
+                <a href={`mailto:${PROFESSIONISTA.email}`}>{t("contact.info.email")}</a>
+              </p>
               <a className="btn btn--ghost co__whatsapp" href={whatsappHref} target="_blank" rel="noopener">
                 {t("contact.info.whatsappCta")}
               </a>
